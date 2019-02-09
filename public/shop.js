@@ -4,6 +4,8 @@ function fetchprod(done){
         done(data)
     })
 }
+
+/*
 var count=1;
 function createproduct(prod){
     return $(`
@@ -18,19 +20,9 @@ function createproduct(prod){
                 </div>
             </div>
     `)
-}
-
-
-/*function addprod(name,manuf,price,done){
-    $.post('/api/products',{
-      name:name,
-      manufacturer:manuf,
-      price:price
-    },
-    function(data){
-        done(data)
-    })
 }*/
+
+
 
 function addProduct (name, manuf, price, done) {
     $.post('/api/products', {
@@ -41,3 +33,4 @@ function addProduct (name, manuf, price, done) {
         done(data)
     })
 }
+

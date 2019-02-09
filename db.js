@@ -40,12 +40,21 @@ const Product = db.define('products', {
         defaultValue: 0.0
     }
 })
-const Cart=
+const Cart=db.define('carts',{
+    userid: {
+        type: Sequelize.INTEGER,
+       // autoIncrement: true,
+    },
+    productid:{
+        type: Sequelize.INTEGER,
+        allowNull: false
+    }
+})
 
 db.sync()
     .then(() => console.log("Database has been synced"))
     .catch((err) => console.error("Error creating database"))
 
 exports = module.exports = {
-    User, Product
+    User, Product ,Cart
 }
