@@ -18,11 +18,11 @@ const User = db.define('users', {
         primaryKey: true
     },
     name: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(30),
         allowNull: false,
     },
     password:{
-        type:Sequelize.STRING,
+        type:Sequelize.STRING(30),
         allowNull:true
     }
 })

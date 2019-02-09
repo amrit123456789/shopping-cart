@@ -1,5 +1,5 @@
 const route = require('express').Router()
-const passport = require('passport')
+const passport = require('../../passport')
 const path = require('path')
 const  User=require('../../db').User
 
