@@ -8,7 +8,7 @@ const route = require('express').Router();
 route.get('/', (req,res)=> {
     Cart.findAll({
         where:{
-            userid:1
+            //userid:1
         }
     })
     .then((products) => {
@@ -21,17 +21,7 @@ route.get('/', (req,res)=> {
             error: "Could not retrieve products"
         })
     })
-    // sequelize.query(`select * from products where id in
-    // (select distinct productid from carts where userid=1 )` ,
-    // { type: sequelize.QueryTypes.SELECT})
-    // .then(products => {
-    //     res.status(200).send(products)
-    // })
-    // .catch((err) => {
-    //         res.status(500).send({
-    //             error: "Could not retrieve products"
-    //         })
-    //     })
+    
 })
 
 route.post('/', async (req, res) => {

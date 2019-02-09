@@ -2,10 +2,11 @@ const Product = require('../../db').Product
 const route = require('express').Router();
 
 route.get('/', (req, res) => {
+    //req.params
     // Get all products
     Product.findAll()
         .then((products) => {
-            res.status(200).send(products)
+            res.status(200).send(products)//:products,user:userName})
         })
         .catch((err) => {
             res.status(500).send({
