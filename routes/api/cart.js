@@ -38,7 +38,7 @@ route.post('/', async (req, res) => {
     console.log("req id" ,req.body.id)
     var results= await Product.findOne({
         where:{
-            id:1
+            id:req.body.id
         }
     })
     console.log("req id" ,req.body.id)

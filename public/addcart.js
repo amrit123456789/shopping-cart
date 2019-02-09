@@ -20,7 +20,7 @@ $(function(){
                             <div class="col m-3 p-3">
                                 <b>Rs ${products[i].price}</b>
                             </div>
-                            <button class="col btn btn-primary m-3" id=${products[i].productid} onclick="addcart(this)">Buy</button>
+                            <button class="col btn btn-primary m-3" id=${products[i].productid} ">Buy</button>
                         </div>
                     </div>
             `)
