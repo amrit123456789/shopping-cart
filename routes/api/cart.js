@@ -1,7 +1,9 @@
 const sequelize=require('sequelize')
 const Cart = require('../../db').Cart
 const Product = require('../../db').Product
+
 const route = require('express').Router();
+
 
 route.get('/', (req,res)=> {
     Cart.findAll({
@@ -10,17 +12,10 @@ route.get('/', (req,res)=> {
         }
     })
     .then((products) => {
-    //     console.log(products.productid)
-    //    Product.findAll({
-    //        where:{
-    //            id:products.productid
-    //        }
-    //    })
+  
     res.status(200).send(products)
     })
-    // .then((finprod)=>{
-    //     res.status(200).send(finprod)
-    // })
+   
     .catch((err) => {
         res.status(500).send({
             error: "Could not retrieve products"
@@ -39,26 +34,41 @@ route.get('/', (req,res)=> {
     //     })
 })
 
-route.post('/', (req, res) => {
-    // Validate the values
-    // if (isNaN(req.body.)) {
-    //     return res.status(403).send({
-    //         error: "Price is not valid number"
-    //     })
-    // }
-    // Add a new product
-    console.log("before adding")
-    Cart.create({
-       userid:1,
-       productid: parseInt(req.body.id)
-    }).then((product) => {
-        res.status(201).send(product)
-    }).catch((error) => {
-        res.status(501).send({
-            error: "Error adding cart product"
-        })
+route.post('/', async (req, res) => {
+    console.log("req id" ,req.body.id)
+    var results= await Product.findOne({
+        where:{
+            id:1
+        }
     })
-    console.log("after adding")
+    console.log("req id" ,req.body.id)
+    // console.log("1",typeof(results))
+    // console.log("2",results)
+    var result=JSON.parse(JSON.stringify(results))
+    console.log(result)
+    console.log(result.id)
+    console.log(result.name)
+    console.log(result.manufacturer)
+    console.log(result.price)
+    console.log(result["id"])
+    
+    Cart.create({
+                userid:1,
+                productid: parseInt(1),
+                name:result.name,
+                manufacturer:result.manufacturer,
+                price:result.price
+    
+            }).then((carts)=>{
+                        console.log("after cart additoion")
+                        res.status(201).send(carts)
+            })
+            .catch((err) => {
+                res.status(500).send({
+                    error: "Could not add to carts"
+                })
+            })
+   
 })
 
 exports = module.exports = route

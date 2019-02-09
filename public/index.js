@@ -1,3 +1,4 @@
+//const Product = require('../db').Product
 $(function(){
     let productlist=$('#product-list')
     var count=0;
@@ -25,7 +26,9 @@ $(function(){
 //complete by making individual carts of customers
 function addcart(el){
     console.log("before addcart")
-    console.log(el)
+
+    
+    
     $.post('/api/cart',{
         id:el.id
     },

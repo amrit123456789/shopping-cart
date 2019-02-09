@@ -47,7 +47,17 @@ const Cart=db.define('carts',{
     },
     productid:{
         type: Sequelize.INTEGER,
-        allowNull: false
+        
+    },
+    name: {
+        type: Sequelize.STRING,
+        
+    },
+    manufacturer: Sequelize.STRING,
+    price: {
+        type: Sequelize.FLOAT,
+        
+        defaultValue: 0.0
     }
 })
 
