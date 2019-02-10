@@ -5,23 +5,36 @@ const localstrategy= require('passport-local').Strategy
 
 
 console.log("in passport.js")
-passport.serializeUser((user,done)=>{
-    done(null,user.name)
-})
+// passport.serializeUser((user,done)=>{
+//     done(null,user.name)
+// })
   
-passport.deserializeUser(function (name, done) {
-    console.log("in strategy..............")
-    Users.findOne({
-        name: name
-    }).then((user) => {
-        if (!user) {
-            return done(new Error("No such user"))
-        }
-        return done(null, user)
-    }).catch((err) => {
-        done(err)
-    })
+// passport.deserializeUser(function (name, done) {
+//     console.log("in strategy..............")
+//     Users.findOne({
+//         name: name
+//     }).then((user) => {
+//         if (!user) {
+//             return done(new Error("No such user"))
+//         }
+//         return done(null, user)
+//     }).catch((err) => {
+//         done(err)
+//     })
+// })
+
+passport.serializeUser((user,done)=>{
+    done(null,user.id)
 })
+
+passport.deserializeUser(async (userid,done)=>{
+    try {
+        const user = await Users.findById(userid)
+        user.password = undefined
+        return done(null, user)
+      } catch (e) { done(e) }
+    }) 
+
 
 
 console.log("in passport.js")

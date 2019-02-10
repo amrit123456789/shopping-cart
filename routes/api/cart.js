@@ -6,9 +6,12 @@ const route = require('express').Router();
 
 
 route.get('/', (req,res)=> {
+    var v=JSON.parse(JSON.stringify(req.user))
+    console.log(v)
+    console.log("hi............")
     Cart.findAll({
         where:{
-            //userid:1
+            userid:v.id
         }
     })
     .then((products) => {
@@ -50,6 +53,7 @@ route.post('/', async (req, res) => {
     // console.log("1",typeof(results))
     // console.log("2",results)
     var result=JSON.parse(JSON.stringify(results))
+    var v=JSON.parse(JSON.stringify(req.user))
     console.log(result)
     console.log(result.id)
     console.log(result.name)
@@ -58,7 +62,7 @@ route.post('/', async (req, res) => {
     console.log(result["id"])
     
     Cart.create({
-                userid:1,
+                userid:v.id,
                 productid: result.id,
                 name:result.name,
                 manufacturer:result.manufacturer,
