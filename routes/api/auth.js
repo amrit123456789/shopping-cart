@@ -11,8 +11,10 @@ route.get('/signup', (req, res) => {
 })
 route.post('/login', passport.authenticate('local', {
    // console.log("in login post")
-    failureRedirect: '/',
-    successRedirect: '/'
+   successRedirect: '/',
+    failureRedirect: '/api/auth/login',
+    failureFlash: true
+   
 }))
 
 route.post('/signup', (req, res) => {
