@@ -20,7 +20,7 @@ $(function(){
                             <div class="col m-3 p-3">
                                 <b>Rs ${products[i].price}</b>
                             </div>
-                            <button class="col btn btn-primary m-3" id=${products[i].productid} ">Buy</button>
+                            <button class="col btn btn-danger m-3" id=${products[i].productid} " onclick="removecart(this)">Remove</button>
                         </div>
                     </div>
             `)
@@ -30,3 +30,18 @@ $(function(){
     })
     
 })
+function removecart(el){
+    console.log("before remove cart")
+
+    
+    
+    $.post('/api/cart/delete',{
+        id:el.id
+    },
+    function (data) {
+        window.alert(" Deleted from cart database")
+    })
+     window.alert("Deleted from cart database")
+    
+    console.log("after addcart")
+}

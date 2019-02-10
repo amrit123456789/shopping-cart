@@ -24,6 +24,21 @@ route.get('/', (req,res)=> {
     
 })
 
+route.post('/delete',(req,res)=>{
+    Cart.destroy({
+        where:{productid:req.body.id}
+    })
+    .then(()=>{
+        console.log("after cart deletion")
+        res.send(Cart.findAll())
+    })
+    .catch((err) => {
+    res.status(500).send({
+        error: "Could not add to carts"
+    })
+    })
+})
+
 route.post('/', async (req, res) => {
     console.log("req id" ,req.body.id)
     var results= await Product.findOne({
@@ -44,7 +59,7 @@ route.post('/', async (req, res) => {
     
     Cart.create({
                 userid:1,
-                productid: parseInt(1),
+                productid: result.id,
                 name:result.name,
                 manufacturer:result.manufacturer,
                 price:result.price

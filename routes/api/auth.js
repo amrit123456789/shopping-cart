@@ -1,6 +1,6 @@
 const route = require('express').Router()
 const passport = require('../../passport')
-const path = require('path')
+
 const  User=require('../../db').User
 
 route.get('/login', (req, res) => {
@@ -12,8 +12,8 @@ route.get('/signup', (req, res) => {
 route.post('/login', passport.authenticate('local', {
    // console.log("in login post")
    successRedirect: '/',
-    failureRedirect: '/api/auth/login',
-    failureFlash: true
+    failureRedirect: '/api/auth/login'
+   // failureFlash: true
    
 }))
 

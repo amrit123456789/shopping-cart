@@ -6,16 +6,23 @@ const localstrategy= require('passport-local').Strategy
 
 console.log("in passport.js")
 passport.serializeUser((user,done)=>{
-    done(null,user.id)
+    done(null,user.name)
+})
+  
+passport.deserializeUser(function (name, done) {
+    console.log("in strategy..............")
+    Users.findOne({
+        name: name
+    }).then((user) => {
+        if (!user) {
+            return done(new Error("No such user"))
+        }
+        return done(null, user)
+    }).catch((err) => {
+        done(err)
+    })
 })
 
-passport.deserializeUser(async (userid,done)=>{
-    try {
-        const user = await Users.findById(userid)
-        user.password = undefined
-        return done(null, user)
-      } catch (e) { done(e) }
-    }) 
 
 console.log("in passport.js")
 // passport.use(require('./strategies/passport-localstrategy'))
@@ -24,23 +31,29 @@ console.log("in passport.js")
 
 // const localstrategy =require('passport-local').Strategy
 
-const strategy= new localstrategy( async (username, password, done)=>{
-    try {
-        const user =await Users.findOne({where: {name: username} })
-        if(!user){
-            return done(new Error("no such username"))
-        }
-        if (user.password !== password) {
-            return done(new Error('Password mismatch'))
-          }
-        console.log('in strategy')
-          return done(null, user)
-        
-    } catch (error) {
-        done(error)
-    }
-})
+passport.use(new localstrategy(function(name , password , done){
+    console.log("in strategy..............")
+    Users.findOne({
+        where:{name:name}
+    })
+    .then((user)=>{
+        if(!user)
+        {return done(null,false,{message : "no such user "})}
+        if(user.password !== password)
+        {return done(null,false,{message : "wrong password "})}
 
-passport.use(strategy)
+        return done(null,user)
+
+    })
+    .catch((err)=>{
+        return done(err)
+    })
+    console.log("in strategy..............")
+
+}))
+
+// passport.use(strategy)
 
 exports=module.exports =passport;
+
+
