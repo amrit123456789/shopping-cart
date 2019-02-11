@@ -22,6 +22,7 @@ $(function(){
                             </div>
                             <button class="col btn btn-danger m-3" id=${products[i].productid} " onclick="removecart(this)">Remove</button>
                         </div>
+                        <div class="row"> Quantity: ${products[i].qty}</div>
                     </div>
             `)
             console.log(products[i].id)

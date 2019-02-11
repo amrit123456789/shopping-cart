@@ -62,6 +62,10 @@ const Cart=db.define('carts',{
         type: Sequelize.FLOAT,
         
         defaultValue: 0.0
+    },
+    qty:{
+        type: Sequelize.INTEGER,
+        defaultValue:0
     }
 })
 

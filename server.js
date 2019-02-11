@@ -19,4 +19,4 @@ app.use(passport.session())
 app.use('/' , express.static(path.join(__dirname, 'public')))
 app.use('/api',require('./routes/api').route)
 
-app.listen(2678,()=>{console.log("server started at http://localhost:2678")})
+app.listen(2679,()=>{console.log("server started at http://localhost:2679")})
