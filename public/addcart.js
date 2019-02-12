@@ -14,6 +14,9 @@ $(function(){
         for(let i=products.length-1;i>=0;i--){
             cartlist.append(`
             <div class="card col-4 mx-2 p-4" id=${products[i].productid}>
+            <div class="project myeffect">
+            <image class="img-fluid myimg" src="images/img${products[i].id}.jpg" width="200px" height="500px">
+                </div>
                         <h4 class="product name">${products[i].name}</h4>
                         <div class="product-manufacturer">${products[i].manufacturer}</div>
                         <div class="row">
@@ -24,6 +27,9 @@ $(function(){
                         </div>
                         <div class="row"> Quantity: ${products[i].qty}</div>
                     </div>
+
+
+                 
             `)
             console.log(products[i].id)
         }

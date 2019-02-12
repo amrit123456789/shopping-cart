@@ -1,0 +1,107 @@
+.mybg{
+    background-color : rgb(229, 255, 0);
+}
+
+.cart{
+    font-size: 18px;
+    align-self: center;
+    margin-left:400px;
+}
+#slideshowimg{
+    height: 500px;
+    /* object-fit: cover;
+    background-size:cover; */
+}
+
+/* overriding an element in CSS */
+.carousel-caption{
+    color: #000;
+    /* font-style: oblique; */
+    top: 20%;
+     /* left:60%;  */
+    bottom: auto;
+}
+
+.arrowDown{
+     margin-top: 25%; */
+    margin-left: 50% !important;
+    animation: bounce 3s infinite;
+}
+
+@keyframes bounce{
+    0%, 20%, 50%, 80%, 100%{
+        transform: translateY(0);
+    }
+
+    40%{
+        transform: translateY(-30px);
+    }
+
+    60%{
+        transform: translateY(-15px);
+    }
+}
+
+.myhr{
+    width:10%;
+    height: 5px;
+    border-top: 2px solid rgb(19, 18, 18);
+    border-radius: 10px;
+}
+
+.myborder{
+    border-radius: 5px;
+    border : solid rgb(138, 133, 133);
+    border-width :1px;
+}
+
+.norb{
+    border-right: 0px;
+}
+.nolb{
+    border-left: 0px;
+}
+
+/* .myeffect:before{
+    margin-top:30px;
+} */
+.myeffect:hover{
+    
+    animation: inc 2s 
+}
+
+@keyframes inc{
+    /* 0%{
+        height: 150px;
+        width:250px;
+    } */
+    30%{
+        height: 250px;
+        width:300px;
+    }
+
+    100%{
+        background-color:yellow;
+        margin: 0px;
+        height: 265px;
+        width:310px;
+    }
+}
+
+.meff{
+    /* background-color: rgb(22, 190, 190); */
+}
+.project{
+    /* height:400px; */
+    height: 200px;
+    /* background-color: rgb(221, 221, 221); */
+    
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+.myimg{
+    object-fit: cover;
+    background-size:cover;
+    height: 200px !important;
+    width: 200px !important;
+}
